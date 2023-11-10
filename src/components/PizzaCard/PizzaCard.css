@@ -1,0 +1,16 @@
+h6 {
+  font-weight: 700 !important;
+}
+.ingredientes {
+  margin-top: 40px;
+  margin-left: 2rem;
+}
+p .itemIngredient {
+  margin-top: -20px !important;
+}
+.ingredientes svg {
+  margin-right: 10px;
+  color: orange;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
