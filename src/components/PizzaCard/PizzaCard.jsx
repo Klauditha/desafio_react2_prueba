@@ -11,7 +11,7 @@ const PizzaCard = ({ id, name, price, image, ingredients }) => {
     <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src={image} />
       <Card.Body>
-        <Card.Title>{name}</Card.Title>
+        <Card.Title className="Uppercase">{name}</Card.Title>
         <Card.Text>
           <hr></hr>
           <h6>Ingredientes:</h6>
