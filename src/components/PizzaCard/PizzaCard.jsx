@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./PizzaCard.css";
 import { FaPizzaSlice } from "react-icons/fa";
+import { FcViewDetails, FcPaid } from "react-icons/fc";
+import { PatternFormat } from "react-number-format";
 
 const PizzaCard = ({ id, name, price, image, ingredients }) => {
   return (
@@ -16,21 +18,34 @@ const PizzaCard = ({ id, name, price, image, ingredients }) => {
           <div className="ingredientes">
             {ingredients
               ? ingredients.map((ingredient, index) => (
-                  <p className="itemIngredient" key={index}>
+                  <div className="itemIngredientes" key={index}>
                     <FaPizzaSlice />
                     {ingredient}
-                  </p>
+                  </div>
                 ))
               : null}
           </div>
-
-          <h1>{price}</h1>
         </Card.Text>
-        <div>
-          <Button variant="primary">Go somewhere</Button>
-          <Button variant="primary">Go somewhere</Button>
-        </div>
       </Card.Body>
+      <Card.Footer className="bg-white border">
+        <Card.Text>
+          <div className="price" format="currency">
+            <PatternFormat format="$ #.##0" value={price} displayType="text" />
+          </div>
+          <div className="botones">
+            <Button variant="info" className="btn-md text-white">
+              {" "}
+              Ver más
+              <FcViewDetails />
+            </Button>
+            <Button variant="danger">
+              {" "}
+              Añadir
+              <FcPaid />
+            </Button>
+          </div>
+        </Card.Text>
+      </Card.Footer>
     </Card>
   );
 };
