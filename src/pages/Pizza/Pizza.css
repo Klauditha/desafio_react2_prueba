@@ -1,0 +1,32 @@
+.containerPizza {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 2%;
+  margin-left: 2% !important;
+  margin-right: 2% !important;
+  border: 1px solid black;
+}
+.infoPizza {
+  margin-top: 2%;
+  margin-left: -4%;
+  margin-right: 4%;
+  text-align: justify;
+}
+.imagenPizza {
+  display: flex;
+  align-items: center;
+}
+.titlePizza {
+  text-transform: capitalize;
+}
+.titleIngredientes {
+  padding-top: 3%;
+  padding-bottom: 1%;
+  text-transform: capitalize;
+}
+.precioAnadir {
+  padding-top: 3%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 3%;
+}

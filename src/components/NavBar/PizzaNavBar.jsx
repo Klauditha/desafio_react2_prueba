@@ -5,13 +5,13 @@ import "./PizzaNavBar.css";
 
 const PizzaNavBar = () => {
   return (
-    <Navbar bg="primary" variant="dark">
+    <Navbar bg="info" variant="dark">
       <Container>
         <Navbar.Brand>
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive ? "text-white active" : "text-black"
+              isActive ? "text-black active" : "text-white"
             }
           >
             <img
@@ -26,7 +26,7 @@ const PizzaNavBar = () => {
         <NavLink
           to="/carrito"
           className={({ isActive }) =>
-            isActive ? "text-white active" : "text-black"
+            isActive ? "text-black active" : "text-white"
           }
         >
           Carrito
