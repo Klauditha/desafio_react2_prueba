@@ -5,7 +5,7 @@ export const PizzaProvider = ({ children }) => {
   const [pizzas, setPizzas] = useState([]);
 
   const getPizzas = async () => {
-    const response = await fetch("/pizzas.json");
+    const response = await fetch("pizzas.json");
     const data = await response.json();
     console.log(data);
     setPizzas(data);
