@@ -8,7 +8,7 @@ const PizzaRoutes = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/carrito" element={<Carrito/>} />
-      <Route path="/pizza:id" element={<Pizza />} />
+      <Route path="/pizza/:id" element={<Pizza />} />
     </Routes>
   );
 };

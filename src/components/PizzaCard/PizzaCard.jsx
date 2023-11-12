@@ -5,8 +5,11 @@ import "./PizzaCard.css";
 import { FaPizzaSlice } from "react-icons/fa";
 import { FcViewDetails, FcPaid } from "react-icons/fc";
 import { PatternFormat } from "react-number-format";
+import { useNavigate } from "react-router";
 
 const PizzaCard = ({ id, name, price, image, ingredients }) => {
+  const navigate = useNavigate();
+
   return (
     <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src={image} />
@@ -29,11 +32,15 @@ const PizzaCard = ({ id, name, price, image, ingredients }) => {
       </Card.Body>
       <Card.Footer className="bg-white border">
         <Card.Text>
-          <div className="price" format="currency">
+          <div className="price">
             <PatternFormat format="$ #.##0" value={price} displayType="text" />
           </div>
           <div className="botones">
-            <Button variant="info" className="btn-md text-white">
+            <Button
+              variant="info"
+              className="btn-md text-white"
+              onClick={() => navigate(`/pizza/${id}`)}
+            >
               {" "}
               Ver más
               <FcViewDetails />
