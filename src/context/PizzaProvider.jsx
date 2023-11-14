@@ -7,16 +7,36 @@ export const PizzaProvider = ({ children }) => {
   const getPizzas = async () => {
     const response = await fetch("pizzas.json");
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     setPizzas(data);
   };
 
+  const addToCard = (id) => {
+    try {
+      document.getElementById("btnAdd" + id).disabled = true;
+      let items = pizzas.map((pizza) => {
+        if (pizza.id === id) {
+          pizza.quantity = pizza.quantity ? pizza.quantity + 1 : 1;
+          pizza.total = pizza.price * pizza.quantity;
+          return pizza;
+        } else {
+          return pizza;
+        }
+      });
+      setPizzas(items);
+      alert("Agregado al carrito");
+    } catch (error) {
+      alert("Error al carrito");
+    }
+    console.log(pizzas);
+    document.getElementById("btnAdd" + id).disabled = false;
+  };
   useEffect(() => {
     getPizzas();
   }, []);
 
   return (
-    <PizzaContext.Provider value={{ pizzas, setPizzas }}>
+    <PizzaContext.Provider value={{ pizzas, setPizzas, addToCard }}>
       {children}
     </PizzaContext.Provider>
   );

@@ -6,9 +6,12 @@ import { FaPizzaSlice } from "react-icons/fa";
 import { FcViewDetails, FcPaid } from "react-icons/fc";
 import { PatternFormat } from "react-number-format";
 import { useNavigate } from "react-router";
+import { useContext } from "react";
+import { PizzaContext } from "../../context/PizzaContext";
 
 const PizzaCard = ({ id, name, price, image, ingredients }) => {
   const navigate = useNavigate();
+  const { addToCard } = useContext(PizzaContext);
 
   return (
     <Card style={{ width: "18rem" }}>
@@ -31,27 +34,30 @@ const PizzaCard = ({ id, name, price, image, ingredients }) => {
         </Card.Text>
       </Card.Body>
       <Card.Footer className="bg-white border">
-        <Card.Text>
-          <div className="price">
-            <PatternFormat format="$ #.##0" value={price} displayType="text" />
-          </div>
-          <div className="botones">
-            <Button
-              variant="info"
-              className="btn-md text-white"
-              onClick={() => navigate(`/pizza/${id}`)}
-            >
-              {" "}
-              Ver más
-              <FcViewDetails />
-            </Button>
-            <Button variant="danger">
-              {" "}
-              Añadir
-              <FcPaid />
-            </Button>
-          </div>
-        </Card.Text>
+        <div className="price">
+          <PatternFormat format="$ #.##0" value={price} displayType="text" />
+        </div>
+        <div className="botones">
+          <Button
+            variant="info"
+            className="btn-md text-white"
+            onClick={() => navigate(`/pizza/${id}`)}
+          >
+            {" "}
+            Ver más
+            <FcViewDetails />
+          </Button>
+          <Button
+            variant="danger"
+            id={"btnAdd" + id}
+            onClick={() => addToCard(id)}
+          >
+            {" "}
+            Añadir
+            <FcPaid />
+          </Button>
+        </div>
+
       </Card.Footer>
     </Card>
   );
