@@ -7,7 +7,10 @@ export const PizzaProvider = ({ children }) => {
   const getPizzas = async () => {
     const response = await fetch("pizzas.json");
     const data = await response.json();
-    //console.log(data);
+    data.map((pizza) => {
+      pizza.quantity = 0;
+      pizza.total = 0;
+    });
     setPizzas(data);
   };
 
@@ -28,9 +31,11 @@ export const PizzaProvider = ({ children }) => {
     } catch (error) {
       alert("Error al carrito");
     }
-    console.log(pizzas);
+    let total = pizzas.reduce((a, b) => ({ total: a.total + b.total }));
+    document.getElementById("totalCarrito").innerHTML = `${total.total}`;
     document.getElementById("btnAdd" + id).disabled = false;
   };
+  
   useEffect(() => {
     getPizzas();
   }, []);

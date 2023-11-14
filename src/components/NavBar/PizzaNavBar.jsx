@@ -29,7 +29,7 @@ const PizzaNavBar = () => {
             isActive ? "text-black active" : "text-white"
           }
         >
-          Carrito
+          🛒 <div id="totalCarrito"></div>
         </NavLink>
       </Container>
     </Navbar>
