@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div>
       <Encabezado />
-      <Container fluid className="containerPizzas">
+      <Container fluid className="containerPizzas pt-3">
         {pizzas.map((pizza) => (
           <PizzaCard
             key={pizza.id}

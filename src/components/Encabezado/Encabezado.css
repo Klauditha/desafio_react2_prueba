@@ -1,0 +1,20 @@
+#encabezado {
+  color: white !important;
+  background-color: black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  height: 20vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+    url(../../assets/img/pizza-header.jpg);
+  background-size: cover;
+}
+
+hr {
+  padding: 0;
+  display: block !important;
+  margin: auto !important;
+  border-width: 4px;
+  width: 80%;
+}
