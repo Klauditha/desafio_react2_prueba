@@ -4,6 +4,11 @@ import { useState, useEffect } from "react";
 export const PizzaProvider = ({ children }) => {
   const [pizzas, setPizzas] = useState([]);
 
+  /*
+consumir con fetch o away
+metodo reduce opara el carrito metodo de javascript
+*/
+
   const getPizzas = async () => {
     const response = await fetch("pizzas.json");
     const data = await response.json();
