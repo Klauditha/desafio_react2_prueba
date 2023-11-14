@@ -6,9 +6,12 @@ import { FaPizzaSlice } from "react-icons/fa";
 import { FcViewDetails, FcPaid } from "react-icons/fc";
 import { PatternFormat } from "react-number-format";
 import { useNavigate } from "react-router";
+import { useContext } from "react";
+import { PizzaContext } from "../../context/PizzaContext";
 
 const PizzaCard = ({ id, name, price, image, ingredients }) => {
   const navigate = useNavigate();
+  const { addToCard } = useContext(PizzaContext);
 
   return (
     <Card style={{ width: "18rem" }}>
@@ -44,7 +47,11 @@ const PizzaCard = ({ id, name, price, image, ingredients }) => {
             Ver más
             <FcViewDetails />
           </Button>
-          <Button variant="danger">
+          <Button
+            variant="danger"
+            id={"btnAdd" + id}
+            onClick={() => addToCard(id)}
+          >
             {" "}
             Añadir
             <FcPaid />

@@ -10,7 +10,7 @@ import "./Pizza.css";
 
 const Pizza = () => {
   const { id } = useParams();
-  const { pizzas } = useContext(PizzaContext);
+  const { pizzas, addToCard } = useContext(PizzaContext);
   const pizzaFiltrada = pizzas.filter((pizza) => pizza.id == id);
   const pizza = pizzaFiltrada[0];
 
@@ -48,7 +48,11 @@ const Pizza = () => {
           </div>
           <div>
             {" "}
-            <Button variant="danger">
+            <Button
+              variant="danger"
+              id={"btnAdd" + id}
+              onClick={() => addToCard(id)}
+            >
               {" "}
               Añadir
               <FcPaid />
