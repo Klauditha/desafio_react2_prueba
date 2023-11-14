@@ -55,12 +55,32 @@ export const PizzaProvider = ({ children }) => {
     document.getElementById("btnAdd" + id).disabled = false;
   };
 
+  const obtenerTotal = () => {
+    let total = 0;
+    console.log(pizzas);
+    total = pizzas.reduce((a, b) => ({ total: a.total + b.total }));
+    //total = pizzas ? pizzas.reduce((a, b) => ({ total: a.total + b.total })) : 0;
+    console.log(total)
+    const valorTotal = total.total
+      ? currencyFormatter({
+          currency: "CLP",
+          value: total.total,
+        })
+      : currencyFormatter({
+          currency: "CLP",
+          value: 0,
+        });
+    return valorTotal;
+  };
+
   useEffect(() => {
     getPizzas();
   }, []);
 
   return (
-    <PizzaContext.Provider value={{ pizzas, setPizzas, addToCard }}>
+    <PizzaContext.Provider
+      value={{ pizzas, setPizzas, addToCard, obtenerTotal }}
+    >
       {children}
     </PizzaContext.Provider>
   );

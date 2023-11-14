@@ -1,0 +1,22 @@
+.pizzaItemCarrito {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.imgPizzaCarrito{
+    width: 20%
+}
+.namePizzaCarrito{
+    width: 50%;
+    text-transform: capitalize;
+}
+.totalPizzaCarrito{
+    width: 10%;
+}
+.quantityPizzaCarrito   {
+    width: 10%
+}
+.btnDel, .btnAdd {
+    width: 10% ;
+    align-items: left;
+}

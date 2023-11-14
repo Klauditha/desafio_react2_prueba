@@ -1,0 +1,17 @@
+#containerCarritoPage {
+  display: flex;
+  flex-direction: column;
+}
+#tituloCarrito {
+  padding-left: 5%;
+  text-align: left;
+  font-size: 20px;
+}
+#itemsCarrito {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  padding-left: 20%;
+  padding-right: 20%;
+}
