@@ -14,6 +14,14 @@ export const PizzaProvider = ({ children }) => {
     setPizzas(data);
   };
 
+  function currencyFormatter({ currency, value }) {
+    const formatter = new Intl.NumberFormat("es-CL", {
+      style: "currency",
+      minimumFractionDigits: 0,
+      currency,
+    });
+    return formatter.format(value);
+  }
   const addToCard = (id) => {
     try {
       document.getElementById("btnAdd" + id).disabled = true;
@@ -32,10 +40,21 @@ export const PizzaProvider = ({ children }) => {
       alert("Error al carrito");
     }
     let total = pizzas.reduce((a, b) => ({ total: a.total + b.total }));
-    document.getElementById("totalCarrito").innerHTML = `${total.total}`;
+    document.getElementById("totalCarrito").innerHTML = document.getElementById(
+      "totalCarrito"
+    ).innerHTML = total.total
+      ? currencyFormatter({
+          currency: "CLP",
+          value: total.total,
+        })
+      : currencyFormatter({
+          currency: "CLP",
+          value: 0,
+        });
+
     document.getElementById("btnAdd" + id).disabled = false;
   };
-  
+
   useEffect(() => {
     getPizzas();
   }, []);
