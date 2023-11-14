@@ -18,7 +18,7 @@ const PizzaCard = ({ id, name, price, image, ingredients }) => {
       <Card.Img variant="top" src={image} />
       <Card.Body>
         <Card.Title className="Uppercase">{name}</Card.Title>
-        <Card.Text>
+        <div className="card-title">
           <hr></hr>
           <h6>Ingredientes:</h6>
           <div className="ingredientes">
@@ -31,7 +31,7 @@ const PizzaCard = ({ id, name, price, image, ingredients }) => {
                 ))
               : null}
           </div>
-        </Card.Text>
+        </div>
       </Card.Body>
       <Card.Footer className="bg-white border">
         <div className="price">

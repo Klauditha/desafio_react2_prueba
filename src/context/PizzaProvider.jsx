@@ -7,10 +7,21 @@ export const PizzaProvider = ({ children }) => {
   const getPizzas = async () => {
     const response = await fetch("pizzas.json");
     const data = await response.json();
-    //console.log(data);
+    data.map((pizza) => {
+      pizza.quantity = 0;
+      pizza.total = 0;
+    });
     setPizzas(data);
   };
 
+  function currencyFormatter({ currency, value }) {
+    const formatter = new Intl.NumberFormat("es-CL", {
+      style: "currency",
+      minimumFractionDigits: 0,
+      currency,
+    });
+    return formatter.format(value);
+  }
   const addToCard = (id) => {
     try {
       document.getElementById("btnAdd" + id).disabled = true;
@@ -28,9 +39,22 @@ export const PizzaProvider = ({ children }) => {
     } catch (error) {
       alert("Error al carrito");
     }
-    console.log(pizzas);
+    let total = pizzas.reduce((a, b) => ({ total: a.total + b.total }));
+    document.getElementById("totalCarrito").innerHTML = document.getElementById(
+      "totalCarrito"
+    ).innerHTML = total.total
+      ? currencyFormatter({
+          currency: "CLP",
+          value: total.total,
+        })
+      : currencyFormatter({
+          currency: "CLP",
+          value: 0,
+        });
+
     document.getElementById("btnAdd" + id).disabled = false;
   };
+
   useEffect(() => {
     getPizzas();
   }, []);

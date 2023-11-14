@@ -1,3 +1,14 @@
+#containerLogo {
+  display: flex;
+  gap: 10px;
+}
+#iconPizza{
+  color: orange !important; 
+}
+.navbar-brand a {
+  text-decoration: none !important;
+  font-weight: 700 !important;
+}
 .price {
   padding-top: 1%;
   text-align: center !important;
@@ -5,7 +16,7 @@
   font-size: 1.5rem;
 }
 .card-title {
-  font-size: 1.5rem !important;
+  font-size: 1.3rem !important;
   text-transform: capitalize;
 }
 h6 {
@@ -17,6 +28,7 @@ h6 {
   margin-left: 2rem;
 }
 .ingredientes .itemIngredientes {
+  font-size: 1rem;
   margin-top: -2px !important;
 }
 .ingredientes svg {
@@ -34,4 +46,19 @@ h6 {
 }
 .botones button {
   width: 42%;
+}
+#linkCarrito {
+  text-decoration: none !important;
+}
+#containerCarrito {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+#totalCarrito {
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+}
+#iconCart {
+  font-size: 1.5rem !important;
 }
