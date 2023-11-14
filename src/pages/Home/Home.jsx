@@ -27,3 +27,8 @@ const Home = () => {
 };
 
 export default Home;
+
+/*
+consumir con fetch o away
+metodo reduce opara el carrito metodo de javascript
+*/

@@ -15,7 +15,7 @@ const PizzaCard = ({ id, name, price, image, ingredients }) => {
       <Card.Img variant="top" src={image} />
       <Card.Body>
         <Card.Title className="Uppercase">{name}</Card.Title>
-        <div className="card-text">
+        <Card.Text>
           <hr></hr>
           <h6>Ingredientes:</h6>
           <div className="ingredientes">
@@ -28,28 +28,30 @@ const PizzaCard = ({ id, name, price, image, ingredients }) => {
                 ))
               : null}
           </div>
-        </div>
+        </Card.Text>
       </Card.Body>
       <Card.Footer className="bg-white border">
-        <div className="price">
-          <PatternFormat format="$ #.##0" value={price} displayType="text" />
-        </div>
-        <div className="botones">
-          <Button
-            variant="info"
-            className="btn-md text-white"
-            onClick={() => navigate(`/pizza/${id}`)}
-          >
-            {" "}
-            Ver más
-            <FcViewDetails />
-          </Button>
-          <Button variant="danger">
-            {" "}
-            Añadir
-            <FcPaid />
-          </Button>
-        </div>
+        <Card.Text>
+          <div className="price">
+            <PatternFormat format="$ #.##0" value={price} displayType="text" />
+          </div>
+          <div className="botones">
+            <Button
+              variant="info"
+              className="btn-md text-white"
+              onClick={() => navigate(`/pizza/${id}`)}
+            >
+              {" "}
+              Ver más
+              <FcViewDetails />
+            </Button>
+            <Button variant="danger">
+              {" "}
+              Añadir
+              <FcPaid />
+            </Button>
+          </div>
+        </Card.Text>
       </Card.Footer>
     </Card>
   );
