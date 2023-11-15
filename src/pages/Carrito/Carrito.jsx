@@ -1,4 +1,3 @@
-import { Container } from "react-bootstrap";
 import "./Carrito.css";
 import { useContext, useEffect } from "react";
 import { PizzaContext } from "../../context/PizzaContext";

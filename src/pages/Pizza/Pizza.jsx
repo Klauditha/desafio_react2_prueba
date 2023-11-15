@@ -51,7 +51,7 @@ const Pizza = () => {
             <Button
               variant="danger"
               id={"btnAdd" + id}
-              onClick={() => addToCart(id)}
+              onClick={() => addToCart(id,false)}
             >
               {" "}
               Añadir

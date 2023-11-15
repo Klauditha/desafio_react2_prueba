@@ -50,7 +50,7 @@ const PizzaCard = ({ id, name, price, image, ingredients }) => {
           <Button
             variant="danger"
             id={"btnAdd" + id}
-            onClick={() => addToCart(id)}
+            onClick={() => addToCart(id,false)}
           >
             {" "}
             Añadir

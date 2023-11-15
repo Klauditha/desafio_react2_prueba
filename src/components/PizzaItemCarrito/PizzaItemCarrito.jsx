@@ -7,6 +7,33 @@ const PizzaItemCarrito = ({ id }) => {
   const { addToCart, pizzas, delToCart } = useContext(PizzaContext);
   const pizza = pizzas.filter((pizza) => pizza.id == id)[0];
 
+  const validacionAgregar = (id) => {
+    alertify
+      .confirm(
+        "¿Está seguro de agregar un nuevo item al carrito?",
+        function () {
+          addToCart(id, true);
+        },
+        function () {
+          alertify.error("Operación cancelada");
+        }
+      )
+      .set({ labels: { ok: "Si", cancel: "No" } }, { title: "¡Atención!" });
+  };
+
+  const validacionEliminar = (id) => {
+    alertify
+      .confirm(
+        "¿Está seguro de eliminar item del carrito?",
+        function () {
+          delToCart(id);
+        },
+        function () {
+          alertify.error("Operación cancelada");
+        }
+      )
+      .set({ title: "¡Atención!" }, { labels: { ok: "Si", cancel: "No" } });
+  };
   return (
     <>
       {pizza !== undefined ? (
@@ -25,7 +52,7 @@ const PizzaItemCarrito = ({ id }) => {
           <div className="btnDel">
             <button
               className="btn btn-danger"
-              onClick={() => delToCart(pizza.id)}
+              onClick={() => validacionEliminar(pizza.id)}
             >
               -
             </button>
@@ -34,7 +61,7 @@ const PizzaItemCarrito = ({ id }) => {
           <div className="btnAdd">
             <button
               className="btn btn-primary"
-              onClick={() => addToCart(pizza.id)}
+              onClick={() => validacionAgregar(pizza.id)}
             >
               +
             </button>

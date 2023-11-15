@@ -22,9 +22,9 @@ export const PizzaProvider = ({ children }) => {
     });
     return formatter.format(value);
   }
-  const addToCart = (id) => {
+  const addToCart = (id, isCarrito) => {
     try {
-      //document.getElementById("btnAdd" + id).disabled = true;
+      if (!isCarrito) document.getElementById("btnAdd" + id).disabled = true;
       let items = pizzas.map((pizza) => {
         if (pizza.id === id) {
           pizza.quantity = pizza.quantity ? pizza.quantity + 1 : 1;
@@ -35,50 +35,31 @@ export const PizzaProvider = ({ children }) => {
         }
       });
       setPizzas(items);
-      alert("Agregado al carrito");
+      alertify.success("Se ha agregado un item al carrito correctamente");
     } catch (error) {
-      console.log(error);
-      alert("Error al carrito");
+      alertify.error("Error al agregar item al carrito");
     }
-    let total = pizzas.reduce((a, b) => ({ total: a.total + b.total }));
-    document.getElementById("totalCarrito").innerHTML = document.getElementById(
-      "totalCarrito"
-    ).innerHTML = total.total
-      ? currencyFormatter({
-          currency: "CLP",
-          value: total.total,
-        })
-      : currencyFormatter({
-          currency: "CLP",
-          value: 0,
-        });
-
-    //document.getElementById("btnAdd" + id).disabled = false;
+    document.getElementById("totalCarrito").innerHTML = obtenerTotal();
+    if (!isCarrito) document.getElementById("btnAdd" + id).disabled = false;
   };
 
   const delToCart = (id) => {
-    let items = pizzas.map((pizza) => {
-      if (pizza.id === id) {
-        pizza.quantity = pizza.quantity ? pizza.quantity - 1 : 0;
-        pizza.total = pizza.price * pizza.quantity;
-        return pizza;
-      } else {
-        return pizza;
-      }
-    });
-    setPizzas(items);
-    let total = pizzas.reduce((a, b) => ({ total: a.total + b.total }));
-    document.getElementById("totalCarrito").innerHTML = document.getElementById(
-      "totalCarrito"
-    ).innerHTML = total.total
-      ? currencyFormatter({
-          currency: "CLP",
-          value: total.total,
-        })
-      : currencyFormatter({
-          currency: "CLP",
-          value: 0,
-        });
+    try {
+      let items = pizzas.map((pizza) => {
+        if (pizza.id === id) {
+          pizza.quantity = pizza.quantity ? pizza.quantity - 1 : 0;
+          pizza.total = pizza.price * pizza.quantity;
+          return pizza;
+        } else {
+          return pizza;
+        }
+      });
+      setPizzas(items);
+      document.getElementById("totalCarrito").innerHTML = obtenerTotal();
+      alertify.success("Se ha eliminado un item al carrito correctamente");
+    } catch (error) {
+      alertify.error("Error al eliminar item al carrito");
+    }
   };
   const obtenerTotal = () => {
     let total = 0;
