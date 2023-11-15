@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import "./PizzaItemCarrito.css";
 import { PizzaContext } from "../../context/PizzaContext";
+import { PatternFormat } from "react-number-format";
 
 const PizzaItemCarrito = ({ id }) => {
   const { addToCart, pizzas, delToCart } = useContext(PizzaContext);
@@ -36,7 +37,6 @@ const PizzaItemCarrito = ({ id }) => {
   };
   return (
     <div className="containerPizzaCarrito">
-    
       {pizza !== undefined ? (
         <div className="pizzaItemCarrito" key={pizza.id}>
           {pizza.img ? (
@@ -49,7 +49,13 @@ const PizzaItemCarrito = ({ id }) => {
             <div className="namePizzaCarrito">{pizza.name}</div>
           ) : null}
 
-          <label className="labelPizzaCarrito">Precio:</label><div className="totalPizzaCarrito">{pizza.total}</div>
+          <div className="totalPizzaCarrito">
+            <PatternFormat
+              format="$ #.##0"
+              value={pizza.total}
+              displayType="text"
+            />
+          </div>
           <div className="btnDel">
             <button
               className="btn btn-danger"
@@ -67,7 +73,6 @@ const PizzaItemCarrito = ({ id }) => {
               +
             </button>
           </div>
-          
         </div>
       ) : null}
     </div>

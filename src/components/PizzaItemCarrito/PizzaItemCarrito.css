@@ -1,4 +1,4 @@
-.containerPizzaCarrito{
+.containerPizzaCarrito {
   margin: 0 !important;
   padding: 1% !important;
   border: 1px solid gray;
@@ -13,10 +13,9 @@
 }
 .namePizzaCarrito {
   text-transform: capitalize;
-  grid-column:4;
+  grid-column: 4;
   grid-row: 1;
   text-align: left;
-  
 }
 .totalPizzaCarrito {
   grid-column: 1;
@@ -35,9 +34,9 @@ div.btnAdd {
   grid-row: 2;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .pizzaItemCarrito {
-    display: flex;
+    display: flex !important;
     justify-content: space-between;
     align-items: center !important;
     align-content: center !important;
@@ -63,8 +62,5 @@ div.btnAdd {
     margin-left: 5%;
     align-items: center !important;
     align-self: center;
-  }
-  .labelPizzaCarrito{
-    display: none
   }
 }
