@@ -1,26 +1,40 @@
 import { Container } from "react-bootstrap";
 import "./Carrito.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PizzaContext } from "../../context/PizzaContext";
 import PizzaItemCarrito from "../../components/PizzaItemCarrito/PizzaItemCarrito";
 
 const Carrito = () => {
   const { pizzas, obtenerTotal } = useContext(PizzaContext);
 
-  //document.getElementById("totalPedido").innerHTML = obtenerTotal() ? obtenerTotal() : 0;
+  const setearTotal = () => {
+    try {
+      document.getElementById("totalPedido").innerHTML = obtenerTotal();
+    } catch (error) {
+      console.log(error);
+      document.getElementById("totalPedido").innerHTML = 0;
+    }
+  };
+  useEffect(() => {
+    setearTotal();
+  }, [pizzas]);
 
   return (
     <div id="containerCarritoPage">
       <div id="tituloCarrito">Detalles del pedido:</div>
       <div id="itemsCarrito">
-        {pizzas ?
-          pizzas.map((pizza) => (
-            <PizzaItemCarrito key={pizza.id} img={pizza.img} name={pizza.name} total={pizza.total} quantity={pizza.quantity}  />
-          )) : (
-            <div>No hay items en el carrito</div>
-          )}
+        {pizzas ? (
+          pizzas
+            .filter((pizza) => pizza.quantity)
+            .map((pizza) => <PizzaItemCarrito id={pizza.id} key={pizza.id} />)
+        ) : (
+          <div>No hay items en el carrito</div>
+        )}
       </div>
-      <div id="totalPedido"></div>
+      <div id="divTotalCarrito">
+        <div>Total: </div>
+        <div id="totalPedido"></div>
+      </div>
       <div>
         <button id="btnPagar" className="btn btn-success">
           Ir a Pagar

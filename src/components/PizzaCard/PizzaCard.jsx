@@ -11,7 +11,7 @@ import { PizzaContext } from "../../context/PizzaContext";
 
 const PizzaCard = ({ id, name, price, image, ingredients }) => {
   const navigate = useNavigate();
-  const { addToCard } = useContext(PizzaContext);
+  const { addToCart } = useContext(PizzaContext);
 
   return (
     <Card style={{ width: "18rem" }}>
@@ -50,7 +50,7 @@ const PizzaCard = ({ id, name, price, image, ingredients }) => {
           <Button
             variant="danger"
             id={"btnAdd" + id}
-            onClick={() => addToCard(id)}
+            onClick={() => addToCart(id)}
           >
             {" "}
             Añadir
