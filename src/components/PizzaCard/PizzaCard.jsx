@@ -14,8 +14,8 @@ const PizzaCard = ({ id, name, price, image, ingredients }) => {
   const { addToCart } = useContext(PizzaContext);
 
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={image} />
+    <Card className="cardPizza" style={{ width: "18rem" }}>
+      <Card.Img className="card-img-top" variant="top" src={image} />
       <Card.Body>
         <Card.Title className="Uppercase">{name}</Card.Title>
         <div className="card-title">
