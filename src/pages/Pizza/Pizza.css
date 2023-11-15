@@ -1,23 +1,24 @@
 .containerPizza {
   display: grid;
   grid-template-columns: 1fr;
-  margin-top: 2%;
-  margin-left: 2% !important;
-  margin-right: 2% !important;
-  border: 1px solid black;
+  margin-top: 3%;
+  width:90vh;
   align-items: center;
 }
 .imagenPizza img{
+  margin: auto;
+  display: block;
   width: 90%;
   height: 90%;
 }
 .infoPizza {
   margin-top: 2%;
-  margin-left: -4%;
+  margin-left: 4%;
   margin-right: 4%;
   text-align: justify;
 }
 .titlePizza {
+  padding-top: 2%;
   text-transform: capitalize;
 }
 .titleIngredientes {
