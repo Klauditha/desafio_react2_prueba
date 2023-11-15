@@ -62,3 +62,7 @@ h6 {
 #iconCart {
   font-size: 1.5rem !important;
 }
+
+@media screen and (min-width: 768px) {
+  
+}
