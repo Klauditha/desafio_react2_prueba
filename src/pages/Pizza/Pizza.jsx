@@ -13,54 +13,55 @@ const Pizza = () => {
   const { pizzas, addToCart } = useContext(PizzaContext);
   const pizzaFiltrada = pizzas.filter((pizza) => pizza.id == id);
   const pizza = pizzaFiltrada[0];
-
   return (
     <Container className="containerPizza">
-      {pizza.img ? (
-        <div className="imagenPizza">
-          <img src={pizza.img} alt={pizza.name} height={"380px"} />
-        </div>
-      ) : null}
-
-      <div className="infoPizza">
-        <h3 className="titlePizza">{pizza.name}</h3>
-        <hr></hr>
-        <div>{pizza.desc}</div>
-        <h6 className="titleIngredientes">Ingredientes:</h6>
-        <div className="ingredientes">
-          {pizza.ingredients
-            ? pizza.ingredients.map((ingredient, index) => (
-                <div className="itemIngredientes" key={index}>
-                  <FaPizzaSlice />
-                  {ingredient}
-                </div>
-              ))
-            : null}
-        </div>
-        <div className="precioAnadir">
-          <div className="price">
-            <label>Precio: </label>
-            <PatternFormat
-              format="$ #.##0"
-              value={pizza.price}
-              displayType="text"
-            />
+      {pizza !== undefined ? (
+        <>
+          <div className="imagenPizza">
+            <img src={pizza.img} alt={pizza.name} height={"380px"} />
           </div>
-          <div>
-            {" "}
-            <Button
-              variant="danger"
-              id={"btnAdd" + id}
-              onClick={() => addToCart(id,false)}
-            >
-              {" "}
-              Añadir
-              <FcPaid />
-            </Button>
+          <div className="infoPizza">
+            <h3 className="titlePizza">{pizza.name}</h3>
+            <hr></hr>
+            <div>{pizza.desc}</div>
+            <h6 className="titleIngredientes">Ingredientes:</h6>
+            <div className="ingredientes">
+              {pizza.ingredients
+                ? pizza.ingredients.map((ingredient, index) => (
+                    <div className="itemIngredientes" key={index}>
+                      <FaPizzaSlice />
+                      {ingredient}
+                    </div>
+                  ))
+                : null}
+            </div>
+            <div className="precioAnadir">
+              <div className="price">
+                <label>Precio: </label>
+                <PatternFormat
+                  format="$ #.##0"
+                  value={pizza.price}
+                  displayType="text"
+                />
+              </div>
+              <div>
+                {" "}
+                <Button
+                  variant="danger"
+                  id={"btnAdd" + id}
+                  onClick={() => addToCart(id, false)}
+                >
+                  {" "}
+                  Añadir
+                  <FcPaid />
+                </Button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div></div>
+        </>
+      ) : (
+        <h3>No se encontró la pizza</h3>
+      )}
     </Container>
   );
 };
