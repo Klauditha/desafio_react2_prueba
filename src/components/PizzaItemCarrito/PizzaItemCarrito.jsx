@@ -35,7 +35,8 @@ const PizzaItemCarrito = ({ id }) => {
       .set({ title: "¡Atención!" }, { labels: { ok: "Si", cancel: "No" } });
   };
   return (
-    <>
+    <div className="containerPizzaCarrito">
+    
       {pizza !== undefined ? (
         <div className="pizzaItemCarrito" key={pizza.id}>
           {pizza.img ? (
@@ -48,7 +49,7 @@ const PizzaItemCarrito = ({ id }) => {
             <div className="namePizzaCarrito">{pizza.name}</div>
           ) : null}
 
-          <div className="totalPizzaCarrito">{pizza.total}</div>
+          <label className="labelPizzaCarrito">Precio:</label><div className="totalPizzaCarrito">{pizza.total}</div>
           <div className="btnDel">
             <button
               className="btn btn-danger"
@@ -66,12 +67,10 @@ const PizzaItemCarrito = ({ id }) => {
               +
             </button>
           </div>
-          <div>
-            <hr></hr>
-          </div>
+          
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
 

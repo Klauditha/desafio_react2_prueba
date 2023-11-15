@@ -40,13 +40,12 @@
     margin-top: 2%;
     margin-left: 2% !important;
     margin-right: 2% !important;
-    border: 1px solid black;
-    align-items: center;
+    width:100vh;
   }
   .imagenPizza {
     display: flex;
     justify-content: center;
-    height: 300px;
-    width: 400px;
+    height: 100%;
+    width: 100%;
   }
 }
