@@ -51,7 +51,7 @@ const PizzaItemCarrito = ({ id }) => {
 
           <div className="totalPizzaCarrito">
             <PatternFormat
-              format="$ ##.###"
+              format="$ ######"
               value={pizza.total}
               displayType="text"
             />
